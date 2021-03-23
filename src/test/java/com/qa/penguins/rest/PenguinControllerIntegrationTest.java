@@ -2,7 +2,6 @@ package com.qa.penguins.rest;
 
 import static org.springframework.test.web.servlet.request.MockMvcRequestBuilders.delete;
 import static org.springframework.test.web.servlet.request.MockMvcRequestBuilders.get;
-import static org.springframework.test.web.servlet.request.MockMvcRequestBuilders.post;
 import static org.springframework.test.web.servlet.request.MockMvcRequestBuilders.put;
 import static org.springframework.test.web.servlet.result.MockMvcResultMatchers.content;
 import static org.springframework.test.web.servlet.result.MockMvcResultMatchers.status;
@@ -21,6 +20,7 @@ import org.springframework.test.context.jdbc.Sql.ExecutionPhase;
 import org.springframework.test.web.servlet.MockMvc;
 import org.springframework.test.web.servlet.RequestBuilder;
 import org.springframework.test.web.servlet.ResultMatcher;
+import org.springframework.test.web.servlet.request.MockMvcRequestBuilders;
 
 import com.fasterxml.jackson.databind.ObjectMapper;
 import com.qa.penguins.domain.Penguin;
@@ -47,8 +47,8 @@ public class PenguinControllerIntegrationTest {
 		// convert it to json string
 		String newPenguinAsJSON = this.mapper.writeValueAsString(newPenguin);
 		// build mock request
-		RequestBuilder mockRequest = post("/createPenguin").contentType(MediaType.APPLICATION_JSON)
-				.content(newPenguinAsJSON);
+		RequestBuilder mockRequest = MockMvcRequestBuilders.post("/createPenguin")
+				.contentType(MediaType.APPLICATION_JSON).content(newPenguinAsJSON);
 
 		// create "saved" penguin
 		Penguin savedPenguin = new Penguin(2L, "Pingu", 45, 0, 64);

@@ -33,12 +33,6 @@ public class PenguinServiceDB implements PenguinService {
 	public Penguin getPenguinById(Long id) {
 		Optional<Penguin> optPenguin = this.repo.findById(id);
 		return optPenguin.get();
-//		Penguin penguin = this.repo.findById(id);
-//		if (penguin != null) {
-//			return penguin;
-//		} else {
-//			return null;
-//		}
 	}
 
 	@Override
