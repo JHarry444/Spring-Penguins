@@ -23,4 +23,5 @@
 **/secrets.dev.yaml
 **/values.dev.yaml
 target/
+chromedriver*
 README.md
