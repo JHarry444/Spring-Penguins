@@ -1,9 +1,12 @@
 package com.qa.penguins.domain;
 
+import java.util.Set;
+
 import javax.persistence.Entity;
 import javax.persistence.GeneratedValue;
 import javax.persistence.GenerationType;
 import javax.persistence.Id;
+import javax.persistence.OneToMany;
 
 @Entity
 public class Igloo {
@@ -13,6 +16,9 @@ public class Igloo {
 	private Long id;
 
 	private String name;
+
+	@OneToMany(mappedBy = "igloo")
+	private Set<Penguin> penguins;
 
 	public Igloo(Long id, String name) {
 		super();
@@ -38,6 +44,14 @@ public class Igloo {
 
 	public void setName(String name) {
 		this.name = name;
+	}
+
+	public Set<Penguin> getPenguins() {
+		return penguins;
+	}
+
+	public void setPenguins(Set<Penguin> penguins) {
+		this.penguins = penguins;
 	}
 
 }

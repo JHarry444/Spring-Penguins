@@ -7,7 +7,7 @@ import org.springframework.web.bind.annotation.CrossOrigin;
 import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.RestController;
 
-import com.qa.penguins.domain.Igloo;
+import com.qa.penguins.rest.dtos.IglooDTO;
 import com.qa.penguins.service.penguin.IglooService;
 
 @RestController
@@ -22,7 +22,7 @@ public class IglooController {
 	}
 
 	@GetMapping("/getIgloos")
-	public ResponseEntity<List<Igloo>> getAll() {
+	public ResponseEntity<List<IglooDTO>> getAll() {
 		return ResponseEntity.ok(this.service.getAll());
 	}
 }

@@ -4,6 +4,7 @@ import javax.persistence.Entity;
 import javax.persistence.GeneratedValue;
 import javax.persistence.GenerationType;
 import javax.persistence.Id;
+import javax.persistence.ManyToOne;
 
 @Entity // marks as table
 public class Penguin {
@@ -19,6 +20,9 @@ public class Penguin {
 	private int noOfChildren;
 
 	private int tuxedoSize;
+
+	@ManyToOne
+	private Igloo igloo;
 
 	public Penguin(Long id, String name, int age, int noOfChildren, int tuxedoSize) {
 		super();
@@ -128,6 +132,14 @@ public class Penguin {
 	public String toString() {
 		return "Penguin [id=" + id + ", name=" + name + ", age=" + age + ", noOfChildren=" + noOfChildren
 				+ ", tuxedoSize=" + tuxedoSize + "]";
+	}
+
+	public Igloo getIgloo() {
+		return igloo;
+	}
+
+	public void setIgloo(Igloo igloo) {
+		this.igloo = igloo;
 	}
 
 }
